@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#111827"/>
+  <rect x="40" y="40" width="720" height="370" rx="24" fill="#1F2937" stroke="#374151" stroke-width="4"/>
+  <circle cx="230" cy="180" r="42" fill="#4B5563"/>
+  <path d="M172 304L260 216L338 286L398 238L492 332H172V304Z" fill="#6B7280"/>
+  <text x="400" y="205" text-anchor="middle" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="36">No Image</text>
+  <text x="400" y="245" text-anchor="middle" fill="#9CA3AF" font-family="Arial, sans-serif" font-size="22">Movie Rental System</text>
+</svg>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+<section class="hero-layout compact-hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Admin Login</p>
+    <h1>Admin Login</h1>
+    <p class="lede">
+      Login to manage movies.
+    </p>
+  </div>
+
+  <div class="panel auth-panel">
+    <h2>Admin Login</h2>
+    <form method="post" class="stack-form">
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" placeholder="admin@example.com" required>
+
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="Enter password" required>
+
+      <button type="submit" class="button-primary">Login</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

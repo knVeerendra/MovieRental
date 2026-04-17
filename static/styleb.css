@@ -1,0 +1,119 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 100px;
+    background-image: url('/static/123.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; 
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+input[type="submit"] {
+    width: 300px;
+}
+
+
+
+h2 {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Button Style */
+button {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.3);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(106, 17, 203, 0.4);
+}
+
+/* Booking Form Container */
+#bookingForm {
+    display: none;
+    background-color: white;
+    padding: 30px 25px;
+    margin-top: 30px;
+    width: 350px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Form Elements */
+form label {
+    display: block;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: #2575fc;
+    box-shadow: 0 0 0 2px rgba(37, 117, 252, 0.2);
+}
+
+/* Submit Button */
+form input[type="submit"] {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-top: 25px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 114, 255, 0.3);
+}
+
+form input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 114, 255, 0.4);
+}
+.flashes{
+    background-color: #e9deb5;
+  }

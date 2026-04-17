@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}User Login{% endblock %}
+
+{% block content %}
+<section class="hero-layout">
+  <div class="hero-copy">
+    <p class="eyebrow">Movie Rental System</p>
+    <h1>Movie Rental System</h1>
+    <p class="lede">
+      Browse and rent movies.
+    </p>
+    <div class="stat-row">
+      <div class="stat-card">
+        <strong>Movies</strong>
+        <span>Browse movies</span>
+      </div>
+      <div class="stat-card">
+        <strong>Rentals</strong>
+        <span>See your rentals</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel auth-panel">
+    <h2>User Login</h2>
+    <p>Login to continue.</p>
+    <form method="post" class="stack-form">
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" placeholder="you@example.com" required>
+
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="Enter password" required>
+
+      <button type="submit" class="button-primary">Sign In</button>
+    </form>
+    <p class="helper-text">
+      New here? <a href="{{ url_for('register') }}">Create an account</a>.
+    </p>
+  </div>
+</section>
+{% endblock %}

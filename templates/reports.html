@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Reports{% endblock %}
+
+{% block content %}
+<section class="content-grid single-column">
+  <div class="panel">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Users</p>
+        <h2>Top Users</h2>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Rentals</th>
+            <th>Total Spent</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in leaderboard %}
+            <tr>
+              <td>{{ row.username }}</td>
+              <td>{{ row.rentals }}</td>
+              <td>&#8377;{{ '%.0f'|format(row.spent) }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Movies</p>
+        <h2>Movie Summary</h2>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Movie</th>
+            <th>Times Rented</th>
+            <th>Earnings</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in movie_breakdown %}
+            <tr>
+              <td>{{ row.name }}</td>
+              <td>{{ row.rental_count }}</td>
+              <td>&#8377;{{ '%.0f'|format(row.revenue) }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

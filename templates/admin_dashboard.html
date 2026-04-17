@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <style>
+    /* Background */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Glassmorphic Card */
+    .dashboard {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    select, button {
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+     
+    }
+
+    select {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #000000;
+      appearance: none;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    a {
+      color: #00d4ff;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .dashboard {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Admin Dashboard</h1>
+
+    <p><a href="{{ url_for('admin_charts') }}">📊 View Analytics Charts</a></p>
+
+    <h2>Grant Movie Access</h2>
+    <form method="POST">
+      <label for="user_id">Select User:</label>
+      <select name="user_id" id="user_id">
+        {% for user in users %}
+          <option value="{{ user[0] }}">{{ user[1] }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="movie_id">Select Movie:</label>
+      <select name="movie_id" id="movie_id">
+        {% for movie in movies %}
+          <option value="{{ movie[0] }}">{{ movie[1] }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit">Grant Access</button>
+    </form>
+  </div>
+</body>
+</html>

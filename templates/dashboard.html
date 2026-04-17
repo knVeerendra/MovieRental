@@ -1,0 +1,714 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Buy your favourite movie</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+  <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+ 
+
+
+
+
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  
+  <link rel="stylesheet" href="/static/style123.css">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
+    rel="stylesheet">
+ 
+    <script>
+        function name2() {
+        window.open("/play1", "_blank");
+      }
+      
+      function name4() {
+        window.open("/play2", "_blank");
+      }
+      
+      function name6() {
+        window.open("/play3", "_blank");
+      }
+      
+      
+      function name7() {
+        window.open("/play4", "_blank");
+      }
+      
+      function name8() {
+        window.open("/play5", "_blank");
+      }
+      
+      function name9() {
+        window.open("/play6", "_blank");
+      }
+
+
+      
+      function name1() {
+        window.open("/website", "_blank");
+      }
+      function name3() {
+        window.open("/website", "_blank");
+      }
+      function name5() {
+        window.open("/website", "_blank");
+      }
+      
+      function book() {
+        window.open("/forms", "_blank");
+      }
+
+
+
+
+      </script>
+      
+</head>
+
+<body>
+  <div class="sidebar">
+    
+    <br>
+    <br>
+    <br>
+    <a href="#" class="sidebar-item">
+        <i class="fa fa-search" style="font-size:20px;color:rgb(255, 255, 255)"></i>
+        <br>
+        <p>Search</p>
+    </a> 
+    <br>
+    <a href="#MOVIES HUB" class="sidebar-item">
+        <i class="fa fa-home" style="font-size:20px;color:rgb(255, 255, 255)"></i>
+        <span>Home</span>
+    </a>
+    <br>
+    <a href="#Featured movies" class="sidebar-item">
+        <i class="fa fa-play-circle-o" style="font-size:20px;color:rgb(255, 255, 255)"></i>
+        <span>Movies</span>
+    </a> 
+    <br>
+    <a href="#" class="sidebar-item">
+        <i class="fa fa-bicycle" style="font-size:20px;color:rgb(255, 255, 255)"></i>
+        <span>Sports</span>
+    </a> 
+    <br>
+    <a href="#" class="sidebar-item">
+        <i class="fa fa-cog" style="font-size:20px;color:rgb(255, 255, 255)"></i>
+        <span>Settings</span>
+    </a>
+</div>
+
+
+  <header class="header" data-header>
+   
+    <img src="/static/movie hub.jpeg" width="50px" height="50px" class="im1">
+    <div class="container">
+
+      <div class="overlay" data-overlay></div>
+
+   
+
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+
+          <h2 class="brand-title">MOVIES HUB</h2>
+
+        </ul>
+      </nav>
+
+        <h2 class="plus">Welcome, {{ username }}!</h2>
+        <form>
+          <button onclick="book()" class="btn" aria-labelledby="aria-label-txt">
+        <ion-icon name="car-outline"></ion-icon>
+
+          <span id="aria-label-txt">RECIEPT</span></button></form>
+          
+        
+        <br>
+        <br>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+       
+
+      </div>
+
+    </div>
+  </header>
+
+
+
+
+
+  <main>
+    <article>
+      <section class="section hero" id="home">
+
+        <video class="background-video" autoplay loop muted>
+            <source src="/static/vid.mp4" type="video/mp4">
+        </video>
+        
+        <div class="content">
+         <h1>SPIDERMAN INTO THE SPIDER<br> VERSE</h1>
+          <p>2023 • 5 Subtitles • 7 Languages • U/A 13+</p>
+          <button class="button" id="playButton">Play Video with Sound</button> &nbsp;<button class="button">Watch now</button>
+         
+      </div>
+
+
+
+
+
+
+      </section>
+
+      <section class="section featured-car" id="featured-car">
+        <div class="container">
+
+          <div class="title-wrapper">
+            <h2 class="h2 section-title">Featured movies</h2>
+
+           
+          </div>
+
+          <ul class="featured-car-list">
+
+            <li>
+              <div class="featured-car-card">
+
+                <figure class="card-banner">
+                  <img src="/static/Wrath-of-man.jpg" alt="wrath_of_man" loading="lazy" width="440" height="300"
+                    class="w-100">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-title-wrapper">
+                    <h3 class="h3 card-title">
+                      <a href="#">wrath_of_man</a>
+                    </h3>
+
+                    <data class="year" value="2021">2020</data>
+                  </div>
+
+                  <ul class="card-list">
+
+                    <li class="card-list-item">
+                      <ion-icon name="people-outline"></ion-icon>
+
+                      <span class="card-item-text">5+</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="flash-outline"></ion-icon>
+
+                      <span class="card-item-text">drama</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="speedometer-outline"></ion-icon>
+
+                      <span class="card-item-text">3.1 min ads </span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                      <span class="card-item-text">4 hrs</span>
+                    </li>
+
+                  </ul>
+
+                  <div class="card-price-wrapper">
+
+                    <p class="card-price">
+                      <strong>₹100</strong> 
+                    </p>
+
+                   
+
+                    <button onclick="name1()" class="btn">Buy now</button>
+                    {% if 'wrath_of_man' in unlocked_movies %}
+  <button onclick="name2()" class="btn2">Play now</button>
+{% else %}
+  <button class="btn1" disabled style="background-color: #cbd1db; cursor: not-allowed;">Play 🔒</button>
+{% endif %}
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="featured-car-card">
+
+                <figure class="card-banner">
+                  <img src="/static/avatar.jpg" alt="avatar" loading="lazy" width="440" height="300"
+                    class="w-100">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-title-wrapper">
+                    <h3 class="h3 card-title">
+                      <a href="#">avatar</a>
+                    </h3>
+
+                    <data class="year" value="2019">2019</data>
+                  </div>
+
+                  <ul class="card-list">
+
+                    <li class="card-list-item">
+                      <ion-icon name="people-outline"></ion-icon>
+
+                      <span class="card-item-text">6+</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="flash-outline"></ion-icon>
+
+                      <span class="card-item-text">drama</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="speedometer-outline"></ion-icon>
+
+                      <span class="card-item-text">10 min ads</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                      <span class="card-item-text">5hrs </span>
+                    </li>
+
+                  </ul>
+
+                  <div class="card-price-wrapper">
+
+                    <p class="card-price">
+                      <strong>₹150</strong> 
+                    </p>
+
+                    
+
+                    <button onclick="name3()" class="btn">Buy now</button>
+                    {% if 'avatar' in unlocked_movies %}
+  <button onclick="name4()" class="btn2">Play now</button>
+{% else %}
+  <button class="btn1" disabled style="background-color: #cbd1db; cursor: not-allowed;">Play 🔒</button>
+{% endif %}
+
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="featured-car-card">
+
+                <figure class="card-banner">
+                  <img src="/static/itw.jpg" alt="into the wild" loading="lazy" width="440"
+                    height="300" class="w-100">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-title-wrapper">
+                    <h3 class="h3 card-title">
+                      <a href="#">into the wild</a>
+                    </h3>
+
+                    <data class="year" value="2020">2025</data>
+                  </div>
+
+                  <ul class="card-list">
+
+                    <li class="card-list-item">
+                      <ion-icon name="people-outline"></ion-icon>
+
+                      <span class="card-item-text">7+</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="flash-outline"></ion-icon>
+
+                      <span class="card-item-text">action</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="speedometer-outline"></ion-icon>
+
+                      <span class="card-item-text">15.3 min ads</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                      <span class="card-item-text">2:30 hrs</span>
+                    </li>
+
+                  </ul>
+
+                  <div class="card-price-wrapper">
+
+                    <p class="card-price">
+                      <strong>₹170</strong> 
+                    </p>
+
+                    
+                    <button onclick="name5()" class="btn">Buy now</button>
+                    {% if 'into the wild' in unlocked_movies %}
+  <button onclick="name6()" class="btn2">Play now</button>
+{% else %}
+  <button class="btn1" disabled style="background-color: #cbd1db; cursor: not-allowed; ">Play 🔒</button>
+{% endif %}
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="featured-car-card">
+
+                <figure class="card-banner">
+                  <img src="/static/bb.jpg" alt=" breaking_bad 2005" loading="lazy" width="440"
+                    height="300" class="w-100">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-title-wrapper">
+                    <h3 class="h3 card-title">
+                      <a href="#">breaking_bad</a>
+                    </h3>
+
+                    <data class="year" value="2020">2019</data>
+                  </div>
+
+                  <ul class="card-list">
+
+                    <li class="card-list-item">
+                      <ion-icon name="people-outline"></ion-icon>
+
+                      <span class="card-item-text">21+</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="flash-outline"></ion-icon>
+
+                      <span class="card-item-text">drama</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="speedometer-outline"></ion-icon>
+
+                      <span class="card-item-text">7.7min ads</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                      <span class="card-item-text">3 hrs</span>
+                    </li>
+
+                  </ul>
+
+                  <div class="card-price-wrapper">
+
+                    <p class="card-price">
+                      <strong>FREE</strong> 
+                    </p>
+
+                    
+                    <button onclick="name7()" class="btn">Play now</button>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="featured-car-card">
+
+                <figure class="card-banner">
+                  <img src="/static/deadpool.jpg" alt="deadpool 2019" loading="lazy" width="440"
+                    height="300" class="w-100">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-title-wrapper">
+                    <h3 class="h3 card-title">
+                      <a href="#">deadpool</a>
+                    </h3>
+
+                    <data class="year" value="2021">2024</data>
+                  </div>
+
+                  <ul class="card-list">
+
+                    <li class="card-list-item">
+                      <ion-icon name="people-outline"></ion-icon>
+
+                      <span class="card-item-text">18+</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="flash-outline"></ion-icon>
+
+                      <span class="card-item-text">comedy</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="speedometer-outline"></ion-icon>
+
+                      <span class="card-item-text">17.6min ads</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                      <span class="card-item-text">3 hrs</span>
+                    </li>
+
+                  </ul>
+
+                  <div class="card-price-wrapper">
+
+                    <p class="card-price">
+                      <strong>FREE</strong> 
+                    </p>
+
+                   
+
+                    <button onclick="name8()" class="btn">Play now</button>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="featured-car-card">
+
+                <figure class="card-banner">
+                  <img src="/static/dark.jpg" alt="dark knight 2019" loading="lazy" width="440" height="300"
+                    class="w-100">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-title-wrapper">
+                    <h3 class="h3 card-title">
+                      <a href="#">dark knight</a>
+                    </h3>
+
+                    <data class="year" value="2019">2022</data>
+                  </div>
+
+                  <ul class="card-list">
+
+                    <li class="card-list-item">
+                      <ion-icon name="people-outline"></ion-icon>
+
+                      <span class="card-item-text">13+</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="flash-outline"></ion-icon>
+
+                      <span class="card-item-text">comedy</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="speedometer-outline"></ion-icon>
+
+                      <span class="card-item-text">14.2 min ads</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                      <span class="card-item-text">3 hrs</span>
+                    </li>
+
+                  </ul>
+
+                  <div class="card-price-wrapper">
+
+                    <p class="card-price">
+                      <strong>FREE</strong> 
+                    </p>
+
+                   
+                    <button onclick="name9()" class="btn">Play now</button>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+            </li>
+
+            
+          </ul>
+
+        </div>
+      </section>
+      
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="/static/logo.jpeg" class="im1">
+          </a>
+
+          <p class="footer-text">
+            <h2>About Us</h2>
+            Our website has movies across the web.<br>
+            Find your best deals on  movies.
+          </p>
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Company</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">About us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Pricing plans</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Our blog</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Browse</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Support</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Help center</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Security deposit</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Privacy </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">T & C</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Accross Cities</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Vatican city</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">eNYC</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Florida</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">East Wings</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Theater District</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Congo</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Chengdu</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Beijing</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+     
+
+    </div>
+  </footer>
+
+
+
+
+
+  
+
+</body>
+
+</html>

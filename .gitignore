@@ -1,0 +1,35 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# Flask instance files
+instance/
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+
+# Python build files
+build/
+dist/
+*.egg-info/
+
+# Database local files
+*.db
+*.sqlite3
+
+# Logs
+*.log

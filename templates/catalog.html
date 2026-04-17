@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<section class="summary-grid">
+  <article class="panel metric-panel">
+    <span>Total Rentals</span>
+    <strong>{{ stats.rental_count }}</strong>
+  </article>
+  <article class="panel metric-panel">
+    <span>Total Spent</span>
+    <strong>&#8377;{{ '%.0f'|format(stats.total_spent) }}</strong>
+  </article>
+  <article class="panel metric-panel">
+    <span>Active Rentals</span>
+    <strong>{{ active_rentals|length }}</strong>
+  </article>
+</section>
+
+<section class="content-grid">
+  <div class="catalog-column">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Movie Catalog</p>
+        <h2>Rent a title</h2>
+      </div>
+    </div>
+
+    <div class="movie-grid">
+      {% for movie in movies %}
+        <article class="panel movie-card">
+          {% if movie.image_name %}
+            <img src="{{ url_for('static', filename=movie.image_name) }}" alt="{{ movie.name }} poster" class="movie-poster">
+          {% endif %}
+          <div class="movie-meta">
+            <div>
+              <h3>{{ movie.name }}</h3>
+              <p class="muted">{{ movie.genre }}{% if movie.release_year %} · {{ movie.release_year }}{% endif %}</p>
+            </div>
+            <strong>&#8377;{{ '%.0f'|format(movie.daily_rate) }}</strong>
+          </div>
+          <p class="movie-description">{{ movie.description }}</p>
+          <div class="inventory-row">
+            <span>{{ movie.available_stock }} of {{ movie.stock }} available</span>
+            {% if movie.user_rental_id %}
+              <span class="pill accent">Rented until {{ movie.user_due_on[:10] }}</span>
+            {% elif movie.available_stock > 0 %}
+              <span class="pill success">Available now</span>
+            {% else %}
+              <span class="pill danger">Out of stock</span>
+            {% endif %}
+          </div>
+
+          {% if movie.user_rental_id %}
+            <form method="post" action="{{ url_for('return_movie', rental_id=movie.user_rental_id) }}">
+              <button type="submit" class="button-secondary">Return Movie</button>
+            </form>
+          {% else %}
+            <form method="post" action="{{ url_for('rent_movie', movie_id=movie.id) }}" class="rent-form">
+              <label for="days-{{ movie.id }}">Rental days</label>
+              <select id="days-{{ movie.id }}" name="rental_days">
+                {% for day in [1, 2, 3, 5, 7, 10, 14] %}
+                  <option value="{{ day }}">{{ day }} day{% if day != 1 %}s{% endif %}</option>
+                {% endfor %}
+              </select>
+              <button type="submit" class="button-primary" {% if movie.available_stock <= 0 %}disabled{% endif %}>
+                Rent for &#8377;{{ '%.0f'|format(movie.daily_rate) }}
+              </button>
+            </form>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <aside class="sidebar-column">
+    <div class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Now Watching</p>
+          <h2>Active Rentals</h2>
+        </div>
+      </div>
+      {% if active_rentals %}
+        <div class="list-stack">
+          {% for rental in active_rentals %}
+            <article class="list-item">
+              <div>
+                <strong>{{ rental.movie_name }}</strong>
+                <p class="muted">Due {{ rental.due_on[:10] }} · {{ rental.rental_days }} day rental</p>
+              </div>
+              <span>&#8377;{{ '%.0f'|format(rental.total_price) }}</span>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">No active rentals yet.</p>
+      {% endif %}
+    </div>
+
+    <div class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">History</p>
+          <h2>Recent Returns</h2>
+        </div>
+      </div>
+      {% if rental_history %}
+        <div class="list-stack">
+          {% for rental in rental_history %}
+            <article class="list-item">
+              <div>
+                <strong>{{ rental.movie_name }}</strong>
+                <p class="muted">Returned {{ rental.returned_on[:10] }}</p>
+              </div>
+              <span>&#8377;{{ '%.0f'|format(rental.total_price) }}</span>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">Returned rentals will show up here.</p>
+      {% endif %}
+    </div>
+  </aside>
+</section>
+{% endblock %}

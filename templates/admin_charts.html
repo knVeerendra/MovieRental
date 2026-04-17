@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Charts</title>
+</head>
+<body>
+    <h2>Movies Accessed per User</h2>
+<img src="data:image/png;base64,{{ user_chart }}" alt="User Chart">
+
+<h2>Users with Access per Movie</h2>
+<img src="data:image/png;base64,{{ movie_chart }}" alt="Movie Chart">
+
+<h2>Pie Chart: Access Distribution</h2>
+<img src="data:image/png;base64,{{ pie_chart }}" alt="Pie Chart">
+
+<h2>Top 5 Most Active Users</h2>
+<img src="data:image/png;base64,{{ top_users_chart }}" alt="Top Users Chart">
+
+<h2>Movies with No Access</h2>
+<img src="data:image/png;base64,{{ no_access_chart }}" alt="No Access Chart">
+
+
+</body>
+</html>

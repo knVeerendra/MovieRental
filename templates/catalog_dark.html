@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<section class="catalog-hero panel">
+  <div class="catalog-hero-copy">
+    <p class="eyebrow">Movie Rental System</p>
+    <h1>Browse and rent movies</h1>
+    <p class="lede">
+      Choose a movie and rent it.
+    </p>
+    <div class="hero-chip-row">
+      <span class="hero-chip">Movies</span>
+      <span class="hero-chip">Rent</span>
+      <span class="hero-chip">Return</span>
+    </div>
+  </div>
+  <div class="hero-spotlight">
+    <div class="spotlight-card">
+      <span class="spotlight-label">Available Movies</span>
+      <strong>{{ movies|length }} movies</strong>
+      <p>See available movies here.</p>
+    </div>
+  </div>
+</section>
+
+<section class="summary-grid">
+  <article class="panel metric-panel">
+    <span>Total Rentals</span>
+    <strong>{{ stats.rental_count }}</strong>
+  </article>
+  <article class="panel metric-panel">
+    <span>Total Spent</span>
+    <strong>&#8377;{{ '%.0f'|format(stats.total_spent) }}</strong>
+  </article>
+  <article class="panel metric-panel">
+    <span>Active Rentals</span>
+    <strong>{{ active_rentals|length }}</strong>
+  </article>
+</section>
+
+<section class="recommendation-panel panel">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Recommended Movies</p>
+      <h2>Movies you may like</h2>
+    </div>
+  </div>
+  <div class="recommendation-grid">
+    {% for movie in recommendations %}
+      <article class="recommendation-card">
+        <img src="{{ url_for('static', filename=movie.image_name or 'placeholder.svg') }}" alt="{{ movie.name }} poster" class="recommendation-poster">
+        <div class="recommendation-copy">
+          <div>
+            <strong>{{ movie.name }}</strong>
+            <p class="muted">{{ movie.genre }}{% if movie.release_year %} · {{ movie.release_year }}{% endif %}</p>
+          </div>
+          <span class="pill accent">&#8377;{{ '%.0f'|format(movie.daily_rate) }}</span>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="content-grid">
+  <div class="catalog-column">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Movie Catalog</p>
+        <h2>Available Movies</h2>
+      </div>
+    </div>
+
+    <div class="panel filter-panel">
+      <div class="filter-grid">
+        <div>
+          <label for="movie-search">Search</label>
+          <input id="movie-search" type="text" placeholder="Search by title">
+        </div>
+        <div>
+          <label for="genre-filter">Genre</label>
+          <select id="genre-filter">
+            <option value="">All Genres</option>
+            {% for genre_group in movies|groupby('genre') %}
+              <option value="{{ genre_group.grouper|lower }}">{{ genre_group.grouper }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="movie-grid" id="movie-grid">
+      {% for movie in movies %}
+        <article class="panel movie-card" data-title="{{ movie.name|lower }}" data-genre="{{ movie.genre|lower }}">
+          <div class="movie-poster-wrap">
+            <img src="{{ url_for('static', filename=movie.image_name or 'placeholder.svg') }}" alt="{{ movie.name }} poster" class="movie-poster">
+            <div class="movie-overlay">
+              <span class="movie-overlay-tag">{{ movie.genre }}</span>
+              {% if movie.release_year %}
+                <span class="movie-overlay-year">{{ movie.release_year }}</span>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="movie-meta">
+            <div>
+              <h3>{{ movie.name }}</h3>
+              <p class="muted">{{ movie.genre }}{% if movie.release_year %} - {{ movie.release_year }}{% endif %}</p>
+            </div>
+            <strong class="rate-tag">&#8377;{{ '%.0f'|format(movie.daily_rate) }}</strong>
+          </div>
+
+          <p class="movie-description">{{ movie.description }}</p>
+
+          <div class="inventory-row">
+            <span class="inventory-text">{{ movie.available_stock }} of {{ movie.stock }} available</span>
+            {% if movie.user_rental_id %}
+              <span class="pill accent">Rented until {{ movie.user_due_on[:10] }}</span>
+            {% elif movie.available_stock > 0 %}
+              <span class="pill success">Available</span>
+            {% else %}
+              <span class="pill danger">Out of stock</span>
+            {% endif %}
+          </div>
+
+          {% if movie.user_rental_id %}
+            <form method="post" action="{{ url_for('return_movie', rental_id=movie.user_rental_id) }}" class="action-form">
+              <button type="submit" class="button-secondary action-button">Return Movie</button>
+            </form>
+          {% else %}
+            <form method="post" action="{{ url_for('rent_movie', movie_id=movie.id) }}" class="rent-form action-form">
+              <label for="days-{{ movie.id }}">Rental days</label>
+              <select id="days-{{ movie.id }}" name="rental_days">
+                {% for day in [1, 2, 3, 5, 7, 10, 14] %}
+                  <option value="{{ day }}">{{ day }} day{% if day != 1 %}s{% endif %}</option>
+                {% endfor %}
+              </select>
+              <button type="submit" class="button-primary action-button" {% if movie.available_stock <= 0 %}disabled{% endif %}>
+                Rent for &#8377;{{ '%.0f'|format(movie.daily_rate) }}
+              </button>
+            </form>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+    <p id="movie-empty-state" class="muted filter-empty" hidden>No movies found.</p>
+  </div>
+
+  <aside class="sidebar-column">
+    <div class="panel sidebar-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Your Rentals</p>
+          <h2>Active Rentals</h2>
+        </div>
+      </div>
+      {% if active_rentals %}
+        <div class="list-stack">
+          {% for rental in active_rentals %}
+            <article class="list-item">
+              <div>
+                <strong>{{ rental.movie_name }}</strong>
+                <p class="muted">Due {{ rental.due_on[:10] }} - {{ rental.rental_days }} day rental</p>
+              </div>
+              <span>&#8377;{{ '%.0f'|format(rental.total_price) }}</span>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">No active rentals.</p>
+      {% endif %}
+    </div>
+
+    <div class="panel sidebar-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">History</p>
+          <h2>Recent Returns</h2>
+        </div>
+      </div>
+      {% if rental_history %}
+        <div class="list-stack">
+          {% for rental in rental_history %}
+            <article class="list-item">
+              <div>
+                <strong>{{ rental.movie_name }}</strong>
+                <p class="muted">Returned {{ rental.returned_on[:10] }}</p>
+              </div>
+              <span>&#8377;{{ '%.0f'|format(rental.total_price) }}</span>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">No returned movies yet.</p>
+      {% endif %}
+    </div>
+  </aside>
+</section>
+
+<script>
+  const movieSearchInput = document.getElementById("movie-search");
+  const genreFilterSelect = document.getElementById("genre-filter");
+  const movieCards = Array.from(document.querySelectorAll("#movie-grid .movie-card"));
+  const movieEmptyState = document.getElementById("movie-empty-state");
+
+  function filterMovies() {
+    const searchValue = movieSearchInput.value.trim().toLowerCase();
+    const genreValue = genreFilterSelect.value;
+    let visibleCount = 0;
+
+    movieCards.forEach((movieCard) => {
+      const matchesSearch = movieCard.dataset.title.includes(searchValue);
+      const matchesGenre = !genreValue || movieCard.dataset.genre === genreValue;
+      const isVisible = matchesSearch && matchesGenre;
+
+      movieCard.hidden = !isVisible;
+      if (isVisible) {
+        visibleCount += 1;
+      }
+    });
+
+    movieEmptyState.hidden = visibleCount > 0;
+  }
+
+  movieSearchInput.addEventListener("input", filterMovies);
+  genreFilterSelect.addEventListener("change", filterMovies);
+</script>
+{% endblock %}

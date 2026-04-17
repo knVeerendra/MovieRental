@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+</head>
+<body>
+    <h1>Submit Payment</h1>
+    <form method="post" action="/submit_payment">
+        <label>Username</label>
+        <input type="text" name="carid" required>
+
+        <label>Movie</label>
+        <input type="text" name="carname" required>
+
+        <label>Paid Amount</label>
+        <input type="text" name="name" required>
+
+        <label>PayID / UTR</label>
+        <input type="text" name="age" required>
+
+        <label>Paid Date</label>
+        <input type="date" name="booking_date" required>
+
+        <label>Payment Time</label>
+        <input type="time" name="return_date" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
