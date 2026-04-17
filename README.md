@@ -70,14 +70,21 @@ The application focuses on:
 
 ## 📂 Project Structure
 MovieRental/
-│
-├── app.py
+
+│├── app.py
+
 ├── models.py
+
 ├── routes/
+
 ├── templates/
+
 ├── static/
+
 │ ├── uploads/
+
 │ └── css/
+
 ├── requirements.txt
 
 
